@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleApp1.Person">
+    <Position X="5.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAIAAAAAABAAAEQAAEAAAAAAABgAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.Student">
+    <Position X="8.25" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAIAAAAABAAAAABAAAQAAAAAAAAEQ=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.Teacher">
+    <Position X="8.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAACAAIAAAAACAAAAAAAAAAAIAQAACgAA=</HashCode>
+      <FileName>Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.SchoolMark">
+    <Position X="10.5" Y="0.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ConsoleApp1.SchoolMark.MarkType">
+        <TypeIdentifier>
+          <NewMemberFileName>SchoolMark.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAACAAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>SchoolMark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.MenuController">
+    <Position X="3.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAUAAAAAAAAIoAAAACAAAAAAQAEAAAAIAAAQCAJI=</HashCode>
+      <FileName>MenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.Program">
+    <Position X="10.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
