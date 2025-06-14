@@ -51,23 +51,36 @@ namespace ConsoleApp1
                 Console.WriteLine("Оцінок немає");
                 return 0;
             }
+            
             var examMark = subjectMarks.FirstOrDefault(m => m.type == SchoolMark.MarkType.Экзамен);
-            var regMarks = subjectMarks.Where(m =>
+            double exam = examMark != null ? (examMark.markValue * 0.25) : 0; 
+            
+            var regularMarks = subjectMarks.Where(m =>
                 m.type == SchoolMark.MarkType.Домашняя ||
                 m.type == SchoolMark.MarkType.Самостоятельная ||
                 m.type == SchoolMark.MarkType.Контрольная).ToList();
-            double exam = examMark != null ? examMark.markValue : 0;
-            double regMarksAvg = regMarks.Count > 0 ? regMarks.Average(m => m.markValue) : 0;
+            
+            double homeworkPoints = 0;
+            double controlPoints = 0;
+            double independentPoints = 0;
 
-            if (regMarks.Count > 0 && examMark != null) {
-                return Math.Round(regMarksAvg * 0.75 + exam * 0.25, 2);
+            foreach (var mark in regularMarks) {
+                double points = mark.markValue * 0.25; 
+                switch (mark.type) {
+                    case SchoolMark.MarkType.Домашняя:
+                        homeworkPoints = Math.Max(homeworkPoints, points);
+                        break;
+                    case SchoolMark.MarkType.Контрольная:
+                        controlPoints = Math.Max(controlPoints, points);
+                        break;
+                    case SchoolMark.MarkType.Самостоятельная:
+                        independentPoints = Math.Max(independentPoints, points);
+                        break;
+                }
             }
-            else if (regMarks.Count > 0) {
-                return Math.Round(regMarksAvg * 0.75, 2);
-            }
-            else {
-                return exam;
-            }
+            
+            double totalPoints = Math.Min(homeworkPoints + controlPoints + independentPoints, 75) + exam;
+            return Math.Round(totalPoints, 2);
         }
 
     }

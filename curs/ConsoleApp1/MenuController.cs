@@ -23,8 +23,7 @@ namespace ConsoleApp1 {
                 Console.WriteLine("0. Вихід");
                 Console.Write("Виберіть дію: ");
 
-                try {
-                    int choice = int.Parse(Console.ReadLine());
+                if (int.TryParse(Console.ReadLine(), out int choice)) {
                     switch (choice) {
                         case 1: AddStudent(); break;
                         case 2: AddTeacher(); break;
@@ -39,7 +38,7 @@ namespace ConsoleApp1 {
                         default: Pause("Неправильний вибір."); break;
                     }
                 }
-                catch {
+                else {
                     Pause("Неправильне введення.");
                 }
             }
@@ -53,49 +52,89 @@ namespace ConsoleApp1 {
         private void AddStudent() {
             Console.Clear();
             Console.WriteLine("===== Додавання нового учня =====");
-            Console.Write("Введіть повне ім'я учня: ");
-            string name = Console.ReadLine();
+            
+            string name;
+            do {
+                Console.Write("Введіть повне ім'я учня: ");
+                name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) {
+                    Console.WriteLine("Ім'я не може бути пустим!");
+                }
+                else if (int.TryParse(name, out _)) {
+                    Console.WriteLine("Ім'я не може бути числом!");
+                    name = string.Empty;
+                }
+            } while (string.IsNullOrWhiteSpace(name));
 
-            try {
-                Console.Write("Введіть вік: ");
-                int age = int.Parse(Console.ReadLine());
+            Console.Write("Введіть вік: ");
+            if (!int.TryParse(Console.ReadLine(), out int age)) {
+                Pause("Некоректне введення віку.");
+                return;
+            }
 
-                Console.Write("Введіть зріст (в см): ");
-                double height = double.Parse(Console.ReadLine());
+            Console.Write("Введіть зріст (в см): ");
+            if (!double.TryParse(Console.ReadLine(), out double height)) {
+                Pause("Некоректне введення зросту.");
+                return;
+            }
 
+            string grade;
+            do {
                 Console.Write("Введіть клас учня: ");
-                string grade = Console.ReadLine();
+                grade = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(grade)) {
+                    Console.WriteLine("Клас не може бути пустим!");
+                }
+            } while (string.IsNullOrWhiteSpace(grade));
 
-                students.Add(new Student(name, age, height, grade));
-                Pause("Учень успішно доданий.");
-            }
-            catch {
-                Pause("Некоректне введення даних.");
-            }
+            students.Add(new Student(name, age, height, grade));
+            Pause("Учень успішно доданий.");
         }
 
         private void AddTeacher() {
             Console.Clear();
             Console.WriteLine("===== Додавання нового вчителя =====");
-            Console.Write("Введіть повне ім'я вчителя: ");
-            string name = Console.ReadLine();
+            
+            string name;
+            do {
+                Console.Write("Введіть повне ім'я вчителя: ");
+                name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) {
+                    Console.WriteLine("Ім'я не може бути пустим!");
+                }
+                else if (int.TryParse(name, out _)) {
+                    Console.WriteLine("Ім'я не може бути числом!");
+                    name = string.Empty;
+                }
+            } while (string.IsNullOrWhiteSpace(name));
 
-            try {
-                Console.Write("Введіть вік: ");
-                int age = int.Parse(Console.ReadLine());
+            Console.Write("Введіть вік: ");
+            if (!int.TryParse(Console.ReadLine(), out int age)) {
+                Pause("Некоректне введення віку.");
+                return;
+            }
 
-                Console.Write("Введіть зріст (в см): ");
-                double height = double.Parse(Console.ReadLine());
+            Console.Write("Введіть зріст (в см): ");
+            if (!double.TryParse(Console.ReadLine(), out double height)) {
+                Pause("Некоректне введення зросту.");
+                return;
+            }
 
+            string subject;
+            do {
                 Console.Write("Введіть предмет вчителя: ");
-                string subject = Console.ReadLine();
+                subject = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(subject)) {
+                    Console.WriteLine("Предмет не може бути пустим!");
+                }
+                else if (int.TryParse(subject, out _)) {
+                    Console.WriteLine("Предмет не може бути числом!");
+                    subject = string.Empty;
+                }
+            } while (string.IsNullOrWhiteSpace(subject));
 
-                teachers.Add(new Teacher(name, age, height, subject));
-                Pause("Вчитель успішно доданий.");
-            }
-            catch {
-                Pause("Некоректне введення даних.");
-            }
+            teachers.Add(new Teacher(name, age, height, subject));
+            Pause("Вчитель успішно доданий.");
         }
 
         private void AddMarkToStudent() {

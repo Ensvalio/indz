@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace ConsoleApp1 {
     abstract class Person {
         private string persName;
         private int persAge;
         private double persHeight;
-
+        
         public Person(string persName, int persAge, double persHeight) {
             this.persName = persName;
             this.persAge = persAge;
@@ -20,10 +19,20 @@ namespace ConsoleApp1 {
             persName = Console.ReadLine();
 
             Console.WriteLine("Введіть вік: ");
-            persAge = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int age)) {
+                Console.WriteLine("Невірний формат віку. Встановлено 0.");
+                persAge = 0;
+            } else {
+                persAge = age;
+            }
 
             Console.WriteLine("Введіть зріст");
-            persHeight = double.Parse(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double height)) {
+                Console.WriteLine("Невірний формат зросту. Встановлено 0.");
+                persHeight = 0;
+            } else {
+                persHeight = height;
+            }
         }
 
         public virtual void PersonInfo() {
