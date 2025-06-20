@@ -16,10 +16,23 @@ namespace ConsoleApp1
             students = new List<Student>();
         }
         
+        public Teacher() : base() {
+            students = new List<Student>();
+        }
+        
         public override void InputPersInfo(){
             base.InputPersInfo();
-            Console.WriteLine("Введіть предмет: ");
-            subject = Console.ReadLine();
+            do {
+                Console.Write("Введіть предмет вчителя: ");
+                subject = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(subject)) {
+                    Console.WriteLine("Предмет не може бути пустим!");
+                }
+                else if (int.TryParse(subject, out _)) {
+                    Console.WriteLine("Предмет не може бути числом!");
+                    subject = string.Empty;
+                }
+            } while (string.IsNullOrWhiteSpace(subject));
         }
         
         public override void PersonInfo()

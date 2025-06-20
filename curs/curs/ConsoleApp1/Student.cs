@@ -16,6 +16,10 @@ namespace ConsoleApp1
             marks = new List<SchoolMark>();
         }
 
+        public Student() : base() {
+            marks = new List<SchoolMark>();
+        }
+
         public void PrintMarks() {
             Console.WriteLine("Список оцінок: ");
             if (marks.Count == 0) {
@@ -32,6 +36,20 @@ namespace ConsoleApp1
             base.PersonInfo();
             Console.WriteLine($"Клас: {studentGrade}");
             PrintMarks();
+        }
+
+        public override void InputPersInfo()
+        {
+            base.InputPersInfo();
+            do
+            {
+                Console.Write("Введіть клас учня: ");
+                studentGrade = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(studentGrade))
+                {
+                    Console.WriteLine("Клас не може бути пустим!");
+                }
+            } while (string.IsNullOrWhiteSpace(studentGrade));
         }
 
         public void AddMark(SchoolMark schoolMark) {

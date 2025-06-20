@@ -8,6 +8,8 @@ namespace ConsoleApp1 {
         private int persAge;
         private double persHeight;
         
+        protected Person() { }
+        
         public Person(string persName, int persAge, double persHeight) {
             this.persName = persName;
             this.persAge = persAge;
@@ -15,23 +17,28 @@ namespace ConsoleApp1 {
         }
 
         public virtual void InputPersInfo() {
-            Console.WriteLine("Введіть повне ім'я: ");
-            persName = Console.ReadLine();
+            do {
+                Console.WriteLine("Введіть повне ім'я: ");
+                persName = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(persName)) {
+                    Console.WriteLine("Ім'я не може бути пустим!");
+                }
+                else if (int.TryParse(persName, out _)) {
+                    Console.WriteLine("Ім'я не може бути числом!");
+                    persName = string.Empty;
+                }
+            } while (string.IsNullOrWhiteSpace(persName));
 
             Console.WriteLine("Введіть вік: ");
-            if (!int.TryParse(Console.ReadLine(), out int age)) {
-                Console.WriteLine("Невірний формат віку. Встановлено 0.");
-                persAge = 0;
-            } else {
-                persAge = age;
+            while (!int.TryParse(Console.ReadLine(), out persAge) || persAge <= 0) {
+                Console.WriteLine("Невірний формат віку. Будь ласка, введіть додатне число.");
+                Console.Write("Введіть вік: ");
             }
 
             Console.WriteLine("Введіть зріст");
-            if (!double.TryParse(Console.ReadLine(), out double height)) {
-                Console.WriteLine("Невірний формат зросту. Встановлено 0.");
-                persHeight = 0;
-            } else {
-                persHeight = height;
+            while (!double.TryParse(Console.ReadLine(), out persHeight) || persHeight <= 0) {
+                Console.WriteLine("Невірний формат зросту. Будь ласка, введіть додатне число.");
+                Console.Write("Введіть зріст: ");
             }
         }
 
