@@ -181,6 +181,7 @@ namespace ConsoleApp1 {
                 }
 
                 teachers[index - 1].PersonInfo();
+                Console.WriteLine($"Середня оцінка по предмету: {Math.Round(teachers[index - 1].GetAverageMark(), 2)}");
                 teachers[index - 1].PrintStudents();
                 Pause();
             }

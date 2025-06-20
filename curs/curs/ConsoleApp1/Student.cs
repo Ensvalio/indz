@@ -31,6 +31,7 @@ namespace ConsoleApp1
                 mark.MarkPrint();
             }
         }
+        
 
         public override void PersonInfo() {
             base.PersonInfo();
@@ -61,6 +62,9 @@ namespace ConsoleApp1
         }
         public string GetStudentGrade() {
             return studentGrade;
+        }
+        public List<SchoolMark> GetMarks() {
+            return marks;
         }
 
         public double GetFinalMark(string subject) {
