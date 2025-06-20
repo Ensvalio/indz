@@ -82,10 +82,10 @@ namespace ConsoleApp1
         
         public double GetAverageMark()
         {
-            var allMarks = new List<int>();
+            List<int> allMarks = new List<int>();
             foreach (var student in students)
             {
-                var studentMarks = student.GetMarks();
+                List<SchoolMark> studentMarks = student.GetMarks();
                 foreach (var mark in studentMarks)
                 {
                     if (mark.subject == subject)
