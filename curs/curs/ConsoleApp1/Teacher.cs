@@ -93,7 +93,7 @@ namespace ConsoleApp1
             }
 
             if (allMarks.Count == 0) {
-                return 0;   
+                Console.WriteLine("Вчитель ще не виставив оцінки");   
             }
             return allMarks.Average();
         }
